@@ -1,15 +1,357 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LC CS Project Report: Forest Sentinel</title>
+    <style>
+        /* --- STYLE GUIDE: PINE REPORT (Modern Card Layout) --- */
+        :root {
+            --bg-color: #ffffff; /* Light Cream Background */
+            --header-bg: #778873; /* Primary Pine Green */
+            --accent-green: #A1BC98; /* Fresh Lime Accent */
+            --text-color: #212121; /* Dark Charcoal Text */
+            --card-bg: #F1F3e0;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'Consolas', 'Courier New', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background: var(--header-bg);
+            color: white;
+            padding: 30px 60px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+
+        nav {
+            background-color: var(--card-bg);
+            border-bottom: 3px solid var(--header-bg);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex; /* Horizontal Layout */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: block;
+            padding: 15px 25px;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--header-bg);
+            border-bottom: 3px solid var(--accent-green);
+            background-color: #F0F0F0;
+        }
+
+        /* --- MAIN CONTENT LAYOUT --- */
+        .content-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* --- SECTION CARDS --- */
+        section {
+            background: var(--card-bg);
+            padding: 35px;
+            margin-bottom: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Soft, modern shadow */
+            border-left: 5px solid var(--header-bg);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--header-bg);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 span {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        h3 {
+            color: var(--text-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* --- UTILITARIAN ELEMENTS --- */
+
+        /* Code Block Styling */
+        .code-block {
+            background: #272822; /* Monokai-like dark theme for code */
+            color: #f8f8f2;
+            padding: 15px 20px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent-green);
+        }
+
+        /* Highlight specific terms */
+        .highlight-term {
+            color: var(--header-bg);
+            font-weight: 700;
+        }
+
+        /* Image & Video Containers */
+        .media-box {
+            background-color: #e6f1e6; /* Light green background for media */
+            border: 1px dashed var(--header-bg);
+            border-radius: 6px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            color: var(--text-color);
+            margin: 25px 0;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--header-bg);
+            color: white;
+            border-top: 3px solid var(--accent-green);
+        }
+
+        tr:nth-child(even) { background-color: #f9f9f9; }
+
+        /* Footer */
+        footer {
+            padding: 30px;
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+            background-color: white;
+        }
+    </style>
 </head>
-
 <body>
-  <script src="script.js"></script>
-</body>
 
+    <header>
+        <h1>Smart Forest Sentinel Project Report</h1>
+        <p>Leaving Certificate Computer Science Coursework 2026</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#meeting-brief" class="active">01. Brief</a></li>
+            <li><a href="#investigation">02. Research</a></li>
+            <li><a href="#plan-design">03. Design</a></li>
+            <li><a href="#create">04. Create</a></li>
+            <li><a href="#evaluation">05. Evaluate</a></li>
+            <li><a href="#references">06. References</a></li>
+            <li><a href="#word-count">07. Word Count</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+
+        <section id="meeting-brief">
+            <h2><span>//</span> 1. Meeting the Brief</h2>
+            <div class="media-box" style="height: 400px; background: #e0f2f1;">
+                [VIDEO: Insert demonstration.mp4 here]
+            </div>
+
+            <h3>Project Summary: Forest Sentinel</h3>
+            <p>
+                This project focuses on the <span class="highlight-term">Forests</span> theme by creating a **Smart Forest Sentinel**—an embedded system designed for autonomous wildfire risk prediction. It meets all basic requirements by implementing a standalone Micro:bit system and an offline data logging method.
+            </p>
+
+            <h3>Advanced Requirement Coverage</h3>
+            <p>
+                The system hits advanced requirements through:
+                <ul>
+                    <li>**Adaptive System:** The "Dry Day Counter" algorithm increases the risk score based on the cumulative effect of sustained dry conditions, accurately simulating real-world fire fuel readiness.</li>
+                    <li>**Disaster Risk Modelling:** The Python component runs a predictive model that combines sensor data with historical factors to calculate a Fire Weather Index.</li>
+                    <li>**What-If Scenarios:** Two distinct scenarios simulate external factors (e.g., climate change and deforestation) to demonstrate risk extrapolation.</li>
+                </ul>
+            </section>
+
+        <section id="investigation">
+            <h2><span>//</span> 2. Investigation & Research</h2>
+            <p>
+                Initial investigation focused on the scientific principles behind fire danger rating systems, specifically the **Cumulative Effects** of weather. This informed the decision to move beyond simple temperature thresholds and integrate a running counter for dry periods.
+            </p>
+
+            <h3>Sensor Capabilities</h3>
+            <p>
+                I chose the Micro:bit's internal sensors because they simplify the hardware (fewer components, less potential failure) and still provide the required data points: **Temperature** (for thermal fuel activation) and **Light Level** (as a proxy for solar radiation/drying).
+            </p>
+            <div class="media-box">[IMAGE: Research on Wildfire Causes or Sensor Data Examples]</div>
+        </section>
+
+        <section id="plan-design">
+            <h2><span>//</span> 3. Plan & Design</h2>
+            <h3>System Architecture</h3>
+            <p>
+                The system uses a 'Store and Dump' architecture. The Field Unit (Micro:bit) operates autonomously, saving data to its flash storage. The Analysis Unit (Python) retrieves this data via serial connection for complex modelling.
+            </p>
+
+            <div class="code-block">
+// FIELD UNIT FLOW
+[Power On] -> [Calibrate Baseline] -> LOOP: [Read Sensors] -> [Calculate Adaptive Risk] -> [Update Halo LED] -> [Log Data to Flash]
+            </div>
+
+            <h3>Flowchart of Micro:bit Logic</h3>
+            <p>
+                The flowchart clearly shows the split between the continuous logging cycle and the interrupt-driven features (Calibration and Data Dump).
+            </p>
+            <div class="media-box">[IMAGE: Insert your Micro:bit Flowchart here]</div>
+        </section>
+
+        <section id="create">
+            <h2><span>//</span> 4. Create & Development</h2>
+            <h3>The 24-LED Halo Output</h3>
+            <p>
+                The 24 LEDs are divided to visualize risk: LEDs 1-8 are Green (Low), 9-16 are Yellow (Moderate), and 17-24 are Red (High/Critical). This provides a non-textual, easily understood visual cue.
+            </p>
+
+            <h3>The Calibration Solution</h3>
+            <p>
+                **Problem:** Risk calculations were inconsistent between indoor and outdoor testing. **Solution:** Button A was programmed to set a `Baseline_Light` on boot. The risk calculation now uses a ratio: `Current_Light / Baseline_Light`, making the system adaptable to different environments.
+            </p>
+
+            <h3>Python Modelling: Running the Scenarios</h3>
+            <p>
+                The Python script uses the <span class="highlight-term">Pandas</span> library to load the data from the CSV file. The scenario logic is implemented by manipulating the temperature column before re-running the risk calculation.
+            </p>
+            <div class="code-block">
+# Scenario 2: Deforestation (50% Light Increase)
+df['Light_SCENARIO'] = df['Light'] * 1.5 
+df['Risk_SCENARIO_Deforest'] = calculate_risk(df['Temperature'], df['Light_SCENARIO'])
+                </div>
+        </section>
+
+        <section id="evaluation">
+            <h2><span>//</span> 5. Evaluation & Conclusion</h2>
+            <h3>Evaluation of Final Artefact</h3>
+            <p>
+                The project successfully demonstrates a clear understanding of embedded system design and computational modelling. The adaptive algorithm proved effective in generating higher risk scores after sustained dry periods, validating the simulation.
+            </p>
+
+            <h3>Future Improvements</h3>
+            <p>
+                To further enhance the project, I would integrate a more robust data transmission protocol, such as LoRa, to enable true real-time remote monitoring without the need for manual data dumping. Additionally, incorporating a dedicated **Humidity Sensor** would make the FWI prediction model more accurate.
+            </p>
+        </section>
+
+        <section id="references">
+            <h2><span>//</span> 6. References</h2>
+            <ul>
+                <li>[1] State Examinations Commission, "Computer Science Coursework Project Brief 2026".</li>
+                <li>[2] MicroPython Documentation: Flash memory file system.</li>
+                <li>[3] Python Libraries: Pandas, NumPy, Matplotlib documentation.</li>
+            </ul>
+        </section>
+
+        <section id="word-count">
+            <h2><span>//</span> 7. Word Count Summary</h2>
+            <table>
+                <thead>
+                    <tr><th>Section</th><th>Word Count</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Total Word Count</td><td>[TOTAL] / 2500</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <footer>
+        Leaving Certificate Computer Science 2026 | Project: Smart Forest Sentinel
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            // Determine which section is currently in view
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Update active state for the top navigation bar
+            navLi.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
