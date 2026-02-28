@@ -25,7 +25,7 @@
             <ul>
                 <li><a href="#brief" class="active">01. PROJECT BRIEF</a></li>
                 <li><a href="#research">02. INVESTIGATION</a></li>
-                <li><a href="#design">03. ARCHITECTURE</a></li>
+                <li><a href="#design">03. DESIGN</a></li>
                 <li><a href="#create">04. DEVELOPMENT</a></li>
                 <li><a href="#evaluate">05. EVALUATION</a></li>
             </ul>
@@ -78,6 +78,9 @@
                             possible solutions.
                         </p>
                         <h3>The Task</h3>
+                        <br>
+                        <hr>
+                        <br>
                         <p>
                             For this project you are required to develop a functional embedded system that collects
                             environmental data and simulates a real-world process related to the theme of forests and their
@@ -101,6 +104,9 @@
 
             <article>
                 <h3>Basic Project Requirements</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                     <span class="highlight-term">- Embedded system design</span>
                 <ul>
@@ -128,6 +134,9 @@
             </article>
             <article>
                 <h3>Advanced Project Requirements</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                     <span class="highlight-term">- Disaster risk modelling</span>
                 <ul>
@@ -135,12 +144,14 @@
                         Met Éireann using an Application Programming Interface (API).</li>
                     <li>The model will calculate the fire risk score using the temperature, light intensity and rain
                         data</li>
+                    <!-- not counted in word count -->
                     <div class="code-block"><br>
                         # Fire Risk Score Formula = (Temperature × 2) + (Scaled Down Light Intensity<sup>3</sup> × 67) ±
                         (Rainfall modifier)<br>
                         base = float(micro.at[i, 'Temp'] * 2.0) + (67 * ((float(micro.at[i, 'Light']) / 230)**3))<br>
                         final = base + rain_modifier<br>
                     </div>
+                
                     <li>The rainfall modifier is a value from +20 to -30 depending on rain ammounts.</li>
                 </ul>
                 <br>
@@ -160,7 +171,7 @@
                     <li>My <strong>Micro:bit</strong> features a calibration for the light sensor, this should be done
                         on a typical day and gets a baseline reading to calculate the preliminary risk score.</li>
                     <li>The <strong>Micro:bit</strong> also makes the understanding that if the temprature is high and
-                        the it is sunny the forrest will be drier, the soil will be less saturated and the risk for a
+                        the it is sunny the forest will be drier, the soil will be less saturated and the risk for a
                         fire to spread will be increased accordingly.</li>
                     <li>This is <strong>physical</strong> feedback.</li>
                 </ul>
@@ -179,19 +190,21 @@
             <h2>RESEARCH AND INVESTIGATION</h2>
             <article>
                 <h3>- The Problem:</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                 <ul>
                     <li>In Ireland, 31% of fires recorded by satellite imaging programs are in areas internationally
                         recognised for their role in conserving species and ecosystems. This represents a major loss to
                         biodiversity and forest health.</li>
                     <li>Additionally, there is a considerable risk to hikers and campers. For example, over 25,000
-                        people climbed Croagh Patrick on Reek Sunday last year. A significant wildfire on that day would
-                        have put thousands at risk and had a tremoundous strain on the Mountain Search and Rescue
+                        people climbed Croagh Patrick on Reek Sunday last year. A significant wildfire on that day could 
+                        put thousands at risk and add a tremendous strain on the Search and Rescue
                         services.</li>
-                    <li>Currently in Ireland there is no warning system in place in our forest parks to warn any hikers
-                        or campers about the current danger levels. In other countries such as America, Canada, Germany,
-                        etc it is common to see an analogue sign warning people of the current risk of a wildfire
-                        starting.</li>
+                    <li>Currently, in Ireland there is no warning system in place in our forest parks to warn any hikers
+                        or campers about the current danger levels. In other countries such as America, Germany,
+                        etc it is common to see an analogue sign warning people of the current risk of a wildfire.</li>
                 </ul>
 
                 </p>
@@ -203,15 +216,18 @@
             </article>
             <article>
                 <h3>- Existing Solutions:</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                 <ul>
                     <li>A project from University College Cork called <strong>FLAREs</strong> (Fires, Land and
-                        Atmospheric Remote Sensing of EmissionS) “aims to develop systematic approaches to the
+                        Atmospheric Remote Sensing of EmissionS) <q>“aims to develop systematic approaches to the
                         acquisition and collation of a range of data on agricultural and uncontrolled wildland burning
-                        burn events from satellite datasets.” This data could be used to feed into a warning system
+                        burn events from satellite datasets.”</q> This data could be used to feed into a warning system
                         however it has some issues, for example,
                         <ul>
-                            <li>each overpass by the satellite will record every fire as a new fire creating duplicates.
+                            <li>Each overpass by the satellite will record every fire as a new fire creating duplicates.
                             </li>
                             <li>The project was from 2015 to 2021 and was extended to 2024, currently it is not running.
                             </li>
@@ -221,21 +237,23 @@
                         solution however it has some limitations, primarily this website does not work where there is no
                         mobile reception.
                         <br>
-                        Also, the website only displays a low resoltion of warnings, fires are often localised when they
-                        start and the risk of a fire breaking out can change drastically from one place to another, for
-                        example a dense forrest or the barren side of a mountain.
+                        The website only displays a low resolution of warnings, fires are often localised when they
+                        start and the risk of a fire breaking out can change drastically from one place to another.
                     </li>
                 </ul>
                 </p>
             </article>
             <article>
                 <h3>- Additional Research</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                 <ul>
-                    <li>I used the ComReg (the organisation for the regulation of the electronic communications sector)
+                    <li>I used the ComReg (organisation for the regulation of the communications sector)
                         mobile data coverage map to estimate the phone coverage over Wicklow Mountain National Park.
                     </li>
-                    <li>I studied 4th Generation signal (4G) by Vergin Media, from the map I concluded that coverage is
+                    <li>I studied 4th Generation signal (4G) by Virgin Media, from the map I concluded that coverage is
                         generally weak and patchy across the mountain range, with noticeable improvement near main roads
                         and towns.</li>
                 </ul>
@@ -251,6 +269,7 @@
                             style="object-position: 50% 70%;">
                     </div>
                 </div>
+                <!-- not counted in word count -->
                 <table>
                     <thead>
                         <tr>
@@ -294,40 +313,186 @@
             </article>
             <article>
                 <h3>Takeaway</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                     From my research I can better inform myself when I am planning my project, there are several factors that I need to keep in mind.<br>
                     From my research about FLARES, I can see that using existing data has issues, because of this I should try to detect my own data with my artifact. Some open-source data may be needed however it is important the data is high quality and reliable.<br>
-                    My project needs to be workable in remote areas irrespective of access to other technology, this can be done with the Micro:bit storing the data.<br>
+                    My project needs to be workable in remote areas irrespective of access to other technology, this can be done with local data storing.<br>
                 </p>    
             </article>
         </section>
 
         <section id="design">
-            <h2>SYSTEM ARCHITECTURE: FIELD DEPLOYMENT</h2>
-            <article>
-                <h3>The Store and Dump Protocol</h3>
+            <h2>PLAN AND DESIGN</h2>
+            <article> 
+                <h3>- Design Objectives</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
-                    To ensure the Micro:bit can operate autonomously in the field without a constant computer
-                    connection, a **Store and Dump** protocol was designed. Data is continuously written to the
-                    Micro:bit's internal <span class="highlight-term">Flash Memory</span> and retrieved only when the
-                    device is connected and Button B is pressed.
+                    <ul>
+                        <li><strong>Autonomy:</strong> The device should run on batteries and store data itself.</li>
+                        <li><strong>Independence:</strong> My device should collect its own environmental data.</li>
+                        <li><strong>Easy to use:</strong> My artifact must be easy to set up.</li>
+                        <li><strong>Effective warning:</strong> As a disaster risk warning system, it must be effective at alerting people if there is significant risk.</li>
+                    </ul>
                 </p>
-                <div class="code-block">
-                    [MICROBIT] --(BATTERY POWERED)--> [FLASH LOG: data.txt]<br>
-                    [USER INPUT: Button B] --(TRANSFER)--> [SERIAL CONSOLE]<br>
-                    [PC] <span style="color: var(--accent-orange);">-</span>> [PYTHON MODEL]
+            </article>
+            <article>
+                <h3>- Technologies Used</h3>
+                <br>
+                <hr>
+                <br>
+                <p>
+                    For this project I needed a microcontroller, my two main choices were between a raspberry pi pico or a BBC Micro:bit.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Raspberry Pi Pico</th>
+                            <th>Micro:bit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cost</td><td>€5.50</td><td>€15.97</td>
+                        </tr>
+                        <tr>
+                            <td>Has GPIO pins</td><td>Yes (28)</td><td>Yes (20)</td>
+                        </tr>
+                        <tr>
+                            <td>Lead time</td><td>1 – 2 weeks</td><td>0 (in school)</td>
+                        </tr>
+                        <tr>
+                            <td>Can be battery powered</td><td>Yes</td><td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Runs python</td><td>Yes</td><td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    From my table it is clear the Micro:bit and pi Pico are very comparable. The raspberry pi is cheaper however it would require waiting for the part to be delivered. Because my school already has micro:bits on hand we can use at no cost, from day one, I chose to use the micro:bit.
+                </p>
+                <div class="media-box" style="background: #eee;">
+                    <img
+                        src="/assets/microbit.png"
+                        alt="Micro:bit v2"
+                        style="object-fit: contain;"
+                        >
                 </div>
             </article>
             <article>
-                <h3>Embedded System Flow</h3>
+                <h3>- Project options</h3>
+                <br>
+                <hr>
+                <br>
+                <p>Since I have identified forest fires as a severe disaster, I need to identify what environmental variables I need to measure to model the risk of a forest fire. </p> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Variable</th>
+                            <th>Correlation</th>
+                            <th>Advantages</th>
+                            <th>Disadvantages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Temperature and Humidity</td>
+                            <td>Elevated temperatures combined with low humidity create dry conditions that make vegetation highly flammable.</td>
+                            <td>This project would require an added sensor which would add to the project.</td>
+                            <td>While there is a correlation between humidity and vegetation moisture, Ireland is a humid country meaning the difference between high risk and low risk is slim leading to a percentage error effect.</td>
+                        </tr>
+                        <tr>
+                            <td>Temperature and Light intensity</td>
+                            <td>A hot day dries out vegetation and intense light gives the energy needed to start a fire.</td>
+                            <td>Simplicity of design, both variables can be measured on the micro bit.</td>
+                            <td>I would need to add something to my embedded system. So, it is not too simple.</td>
+                        </tr>
+                        <tr>
+                            <td>Light intensity and wind speed</td>
+                            <td>High brightness means increased likelihood of fire, and strong wind means even a little fire will grow rapidly.</td>
+                            <td>Wind adds a unique element of fire spread.</td>
+                            <td>Only one variable to calculate fire risk.</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <p>
-                    The system logic begins with a <span class="highlight-term">Calibration Phase</span> (Button A),
-                    where a baseline light level is set. The main loop then runs the adaptive risk calculation and
-                    updates the Halo output, providing the hiker with a clear visual warning.
+                    <span class="highlight-term">Justification</span><br>
+                    Measuring temperature and light intensity is the most logical choice to me, it allows me to natively collect data which should be more reliable and easier to implement. This approach has a clear correlation between environment and fire risk. The downside is easily mitigated by adding an added display or output device to convey risk.
                 </p>
-                <div class="media-box">
-
-                </div>
+            </article>
+            <article>
+                <h3>- Project stakeholders and end users</h3>
+                <br>
+                <hr>
+                <br>
+                <p>
+                    <span class="highlight-term">End Users:</span>
+                    <ul>
+                        <li>As the embedded system would be placed in a forest to warn campers and hikers, they are the end users.</li>
+                        <li>A park ranger or other forrestry personell might rely on this system to know when to be attentive to any possible fires and when to alert hikers entering an area of considerable risk.</li>
+                        <li>Meteorologists, arborists, and ecologists cold use the data gathered by the monitoring system to better existing simulations and understand nature's reaction to fires.</li>
+                    </ul>
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Stakeholder</th>
+                            <th>Needs</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Public</td>
+                            <td>Clear, understandable warnings</td>
+                            <td>Simple indicators like colours or sound.</td>
+                        </tr>
+                        <tr>
+                            <td>Ranger</td>
+                            <td>Reliability</td>
+                            <td>The system must work in all weather conditions and provide accurate warnings</td>
+                        </tr>
+                        <tr>
+                            <td>Ecologist</td>
+                            <td>Historical data</td>
+                            <td>Data must be secure and reliable while being held for an extended period.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <hr>
+                <br>
+                <p>
+                    <span class="highlight-term">Potential Stakeholders:</span>
+                    <ul>
+                        <li>Met Eireann
+                            <ul>
+                                <li>Might want this system to Provide weather data and forecasts that feed into fire risk assessment.</li>
+                                <li>Interested in integrating the system with existing networks.</li>
+                            </ul>
+                        </li>
+                        <br>
+                        <li>Government / Local Authorities / County Councils 
+                            <ul>
+                                <li>Departments responsible for civil protection, forestry, and environmental safety.</li>
+                                <li>Interested in reducing wildfire incidents, protecting property, and ensuring public safety.</li>
+                            </ul>
+                        </li>
+                        <br>
+                        <li>Environmental Protection Agency (EPA) 
+                            <ul>
+                                <li>Require accurate environmental data (temperature, rainfall, dryness) for monitoring and compliance.</li>
+                                <lu>Interested in how fire risk affects ecosystems and biodiversity.</lu>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
             </article>
         </section>
 
@@ -335,6 +500,9 @@
             <h2>DEVELOPMENT LOG: ADAPTIVE ALGORITHM</h2>
             <article>
                 <h3>Core Algorithm: The Adaptive Risk Score</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                     The Micro:bit constantly computes the adaptive risk. The <span class="highlight-term">Dry Day
                         Counter</span> simulates the accumulation of environmental stress on the forest.
@@ -348,6 +516,9 @@
             </article>
             <article>
                 <h3>Problem & Resolution: Sensor Variance</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                     **Problem:** Readings were inconsistent depending on the starting location (e.g., inside a classroom
                     vs. outside).<br>
@@ -358,6 +529,9 @@
             </article>
             <article>
                 <h3>Modelling Suite: What-If Scenarios</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                     The Python analysis script leverages the <span class="highlight-term">Pandas</span> library to run
                     advanced simulations.
@@ -374,6 +548,9 @@
             <h2>FINAL EVALUATION: MISSION COMPLETE</h2>
             <article>
                 <h3>Artefact Assessment</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                     The **Firewatch Console** system is highly successful. The separation of the logging and analysis
                     tasks ensures both robustness and complexity. The **Adaptive System** exceeded the basic requirement
@@ -382,6 +559,9 @@
             </article>
             <article>
                 <h3>Future Iterations</h3>
+                <br>
+                <hr>
+                <br>
                 <p>
                     Improvements would focus on connectivity and precision:
                 <ol style="color: #ccc; margin-left: 20px;">
@@ -398,17 +578,24 @@
             </article>
             <article>
                 <h3 style="margin-top: 40px;">Word Count Summary</h3>
+                <br>
+                <hr>
+                <br>
                 <table>
                     <thead>
                         <tr>
-                            <th>Section</th>
-                            <th>Word Count</th>
+                            <th>Section</th><th>Word Count</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Total Word Count</td>
-                            <td style="color: var(--accent-orange);">[TOTAL] / 2500</td>
+                            <td>Project Brief</td><td>384</td>
+                        </tr>
+                        <tr>
+                            <td>Research & Investigation</td><td>489</td>
+                        </tr>
+                        <tr>
+                            <td>Total Word Count</td><td style="color: var(--accent-orange);">[TOTAL] / 2500</td>
                         </tr>
                     </tbody>
                 </table>
