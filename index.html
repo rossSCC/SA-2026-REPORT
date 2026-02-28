@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIREWATCH | 2026 Report</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 </head>
+
 <body>
 
     <header class="hero bg-grid">
-        <canvas id="hero-canvas"></canvas> <!-- Background Animation Canvas -->
-        
-        <h1>FIREWATCH</h1>
+        <canvas id="hero-canvas"></canvas>
+
+        <h1 class="split-title">
+            <span class="fire">FIRE</span><span class="watch">WATCH</span>
+        </h1>
         <p>357528 // COMPUTER SCIENCE // LC 2026</p>
     </header>
 
@@ -30,123 +35,392 @@
     <main>
 
         <section id="brief">
-            <h2>SYSTEM DEPLOYMENT: PROJECT BRIEF</h2>
+            <h2>MEETING THE PROJECT BRIEF</h2>
+
+            <!-- Trigger Button -->
+
+            <button class="open-modal-btn" onclick="openModal()">
+                View Project Brief
+            </button>
+
+
+            <!-- Modal Overlay -->
+            <div id="projectModal" class="modal">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h2>Leaving Certificate Computer Science – Project Brief - 2026</h2>
+                        <button class="close-btn" onclick="closeModal()">&times;</button>
+                    </div>
+
+                    <div class="modal-body" data-lenis-prevent>
+                        <p>
+                            Forests are some of the most important ecosystems on our planet. They give us clean air, store
+                            huge amounts of carbon, protect biodiversity, and help regulate water and temperature. But
+                            forests are under threat from climate change, wildfires, and biodiversity loss. As trees face
+                            droughts, higher temperatures, and diseases, their ability to support wildlife and store carbon is
+                            reduced.<br>
+                        </p>
+                        <img
+                            src="/assets/sec-trees.jpg"
+                            alt="A forest with a clear view of the sky, showing the trees and the ground below."
+                            style="width: 50%; height: auto; margin: 20px 25%;"
+                            >
+                        <cite>https://commons.wikimedia.org/wiki/File:Pine_trees_in_Wicklow_Mountains.jpg</cite>
+                        <p>
+                            Computer science provides tools to help us understand and respond to these challenges. By
+                            creating embedded systems, we can collect environmental data such as soil moisture, light, or
+                            temperature, and simulate real-world processes like canopy cover, drought cycles, or wildfire risk.
+                            We can also build computer-based models that test “what-if” scenarios, compare different
+                            outcomes, and make predictions about the future of forests, climate, biodiversity, and species
+                            populations. These insights help us to understand risks, anticipate future impacts, and explore
+                            possible solutions.
+                        </p>
+                        <h3>The Task</h3>
+                        <p>
+                            For this project you are required to develop a functional embedded system that collects
+                            environmental data and simulates a real-world process related to the theme of forests and their
+                            influence on climate, biodiversity, water resources, species populations, carbon storage, wildfire
+                            risk, etc.<br>
+                            You will also develop a computer-based model that uses the collected data that can be combined
+                            with open-source data or simulated data (dataset created by you), to test “what-if” scenarios,
+                            carry out predictive analysis about future conditions, and compare outcomes. Finally, you will
+                            incorporate a feedback mechanism to make the system adaptive, allowing either your embedded
+                            system or your model to respond automatically to changing conditions.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
             <div class="media-box" style="min-height: 450px; background: #000; border-color: var(--accent-blue);">
                 [VIDEO: Insert demonstration.mp4 here]
             </div>
 
-            <h3>Mission Status</h3>
-            <p>
-                The <strong>Smart Forest Sentinel</strong> meets the 2026 brief by providing a solution for the <span class="highlight-term">Forests</span> theme, specifically targeting <span class="highlight-term">Wildfire Risk Prediction</span>. The system is split into two phases: an autonomous field unit and an analytical command suite.
-            </p>
-
-            <h3>Advanced Requirement Summary</h3>
-            <ul>
-                <li style="color: var(--accent-blue);">**Adaptive System:** Implemented via the <span class="highlight-term">Dry Day Counter</span>, which dynamically adjusts the fire risk sensitivity based on sustained heat and dryness.</li>
-                <li style="color: var(--accent-blue);">**Risk Modelling:** A Python model is used to analyze logged sensor data and project future risk via **"What-If"** scenarios.</li>
-                <li style="color: var(--accent-blue);">**Process Simulation:** The Micro:bit's algorithm simulates the accumulation of fuel dryness, which is the primary cause of major wildfires.</li>
-            </ul>
+            <article>
+                <h3>Basic Project Requirements</h3>
+                <p>
+                    <span class="highlight-term">- Embedded system design</span>
+                <ul>
+                    <li>My Micro:bit embedded system uses the digital buttons and the analogue light and temperature
+                        sensors as inputs.</li>
+                    <li>My artifact uses the light halo as its primary output which adapts to the fire risk level.</li>
+                    <li>There is also an audiable sacle warning that can draw attention to the device and convey risk
+                        withing needing to see the device</li>
+                    <li>Calibration of light level is manual, system updates fire risk autonomously.</li>
+                </ul>
+                <br>
+                <span class="highlight-term">- Data collection</span>
+                <ul>
+                    <li>My artifact automatically logs and stores the temperature and light intensity value with a time
+                        stamp.</li>
+                </ul>
+                <br>
+                <span class="highlight-term">- Process simulation</span>
+                <ul>
+                    <li>My Micro:bit simulates the risk there will be a naturally occurring forest fire based on the
+                        light intensity and temperature. If it is hot for a series of days the forest will be dry,
+                        because of this there is an increased chance of a fire.</li>
+                </ul>
+                </p>
+            </article>
+            <article>
+                <h3>Advanced Project Requirements</h3>
+                <p>
+                    <span class="highlight-term">- Disaster risk modelling</span>
+                <ul>
+                    <li>Python computer model will load the data from the Micro:bit CSV file along with rain data from
+                        Met Éireann using an Application Programming Interface (API).</li>
+                    <li>The model will calculate the fire risk score using the temperature, light intensity and rain
+                        data</li>
+                    <div class="code-block"><br>
+                        # Fire Risk Score Formula = (Temperature × 2) + (Scaled Down Light Intensity<sup>3</sup> × 67) ±
+                        (Rainfall modifier)<br>
+                        base = float(micro.at[i, 'Temp'] * 2.0) + (67 * ((float(micro.at[i, 'Light']) / 230)**3))<br>
+                        final = base + rain_modifier<br>
+                    </div>
+                    <li>The rainfall modifier is a value from +20 to -30 depending on rain ammounts.</li>
+                </ul>
+                <br>
+                <span class="highlight-term">- What-if simulations</span><br>
+                I chose to do two oposing scenarios to see the effects of a chaning climate.
+                <ul>
+                    <li>What if there is an extended period of elevated temperature, affecting other variables in a
+                        heatwave type effect (Global warming).</li>
+                    <li>What if there is a significant increase in rainfall volume, with other factors affected too.
+                        (Climate change)</li>
+                </ul>
+                <br>
+                <span class="highlight-term">- Adaptive system</span><br>
+                Both my embedded Micro:bit system and my Python model have features that will adapt to the enviroment or
+                the data given.
+                <ul>
+                    <li>My <strong>Micro:bit</strong> features a calibration for the light sensor, this should be done
+                        on a typical day and gets a baseline reading to calculate the preliminary risk score.</li>
+                    <li>The <strong>Micro:bit</strong> also makes the understanding that if the temprature is high and
+                        the it is sunny the forrest will be drier, the soil will be less saturated and the risk for a
+                        fire to spread will be increased accordingly.</li>
+                    <li>This is <strong>physical</strong> feedback.</li>
+                </ul>
+                <br>
+                <ul>
+                    <li>My <strong>Python model</strong> will adapt to the data given, It uses a rolling avgerage to
+                        analise the rainfall data instead of just looking at a sum of the data or a day by day
+                        perspective.</li>
+                    <li>This is <strong>virtual</strong> feedback the model adjusts automatically.</li>
+                </ul>
+                </p>
+            </article>
         </section>
 
         <section id="research">
-            <h2>RESEARCH LOG: FIRE WEATHER INDEX</h2>
-            <h3>Environmental Drivers of Risk</h3>
-            <p>
-                Research showed that instantaneous temperature is less critical than the **cumulative drying** of forest fuels. To accurately model this, the embedded system needed a proxy for moisture/humidity, which led to using the <span class="highlight-term">Light Sensor</span> reading as a solar radiation proxy.
-            </p>
-            <div class="media-box">
+            <h2>RESEARCH AND INVESTIGATION</h2>
+            <article>
+                <h3>- The Problem:</h3>
+                <p>
+                <ul>
+                    <li>In Ireland, 31% of fires recorded by satellite imaging programs are in areas internationally
+                        recognised for their role in conserving species and ecosystems. This represents a major loss to
+                        biodiversity and forest health.</li>
+                    <li>Additionally, there is a considerable risk to hikers and campers. For example, over 25,000
+                        people climbed Croagh Patrick on Reek Sunday last year. A significant wildfire on that day would
+                        have put thousands at risk and had a tremoundous strain on the Mountain Search and Rescue
+                        services.</li>
+                    <li>Currently in Ireland there is no warning system in place in our forest parks to warn any hikers
+                        or campers about the current danger levels. In other countries such as America, Canada, Germany,
+                        etc it is common to see an analogue sign warning people of the current risk of a wildfire
+                        starting.</li>
+                </ul>
 
-            </div>
-            <h3>Constraints and Technology Selection</h3>
-            <p>
-                The choice of the Micro:bit's internal sensors and the **24-LED Halo** was justified by the need for a simple, rugged, and low-power autonomous system, prioritizing the code complexity (for high marks) over overly complex hardware setup.
-            </p>
+                </p>
+                <div class="media-box">
+                    <img src="/assets/smokey-sign.jpeg"
+                        alt="Smokey the bear sign displaying a fire risk warning, fire danger low today. not digital"
+                        style="object-position: 50% 70%;">
+                </div>
+            </article>
+            <article>
+                <h3>- Existing Solutions:</h3>
+                <p>
+                <ul>
+                    <li>A project from University College Cork called <strong>FLAREs</strong> (Fires, Land and
+                        Atmospheric Remote Sensing of EmissionS) “aims to develop systematic approaches to the
+                        acquisition and collation of a range of data on agricultural and uncontrolled wildland burning
+                        burn events from satellite datasets.” This data could be used to feed into a warning system
+                        however it has some issues, for example,
+                        <ul>
+                            <li>each overpass by the satellite will record every fire as a new fire creating duplicates.
+                            </li>
+                            <li>The project was from 2015 to 2021 and was extended to 2024, currently it is not running.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>The Met Éireann website displays a map with any current weather warnings, this is a workable
+                        solution however it has some limitations, primarily this website does not work where there is no
+                        mobile reception.
+                        <br>
+                        Also, the website only displays a low resoltion of warnings, fires are often localised when they
+                        start and the risk of a fire breaking out can change drastically from one place to another, for
+                        example a dense forrest or the barren side of a mountain.
+                    </li>
+                </ul>
+                </p>
+            </article>
+            <article>
+                <h3>- Additional Research</h3>
+                <p>
+                <ul>
+                    <li>I used the ComReg (the organisation for the regulation of the electronic communications sector)
+                        mobile data coverage map to estimate the phone coverage over Wicklow Mountain National Park.
+                    </li>
+                    <li>I studied 4th Generation signal (4G) by Vergin Media, from the map I concluded that coverage is
+                        generally weak and patchy across the mountain range, with noticeable improvement near main roads
+                        and towns.</li>
+                </ul>
+                </p>
+                <div class="media-row">
+                    <div class="media-box">
+                        <img src="/assets/4g-coverage-pixel.png" alt="4G coverage map of Wicklow Mountain National Park"
+                            style="object-position: 50% 70%;">
+                    </div>
+
+                    <div class="media-box">
+                        <img src="/assets/4g-coverage.png" alt="4G coverage map of Wicklow Mountain National Park"
+                            style="object-position: 50% 70%;">
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pixels</th>
+                    
+                            
+                            <th>Percentage Coverage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>18 – nothing</li>
+                                    <li>65 - poor</li>
+                                    <li>18 - fair</li>
+                                    <li>3 - good</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>60% poor / no coverage</li>
+                                    <li>30% Patchy</li>
+                                    <li>10% good – mainly around towns</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>102 total</td>
+                            <td>Estimated 30-40% total adequate coverage, although intermittent and slow.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    The key takeaway from this analysis is that there is sparse infrastructure in the central mountain
+                    uplands, with significant terrain shielding from hills and deep valleys creating effectively no
+                    coverage in remote hiking/camping areas.<br>
+                    There is an improvement in signal structure around Glendalough Upper, the carpark, and artillery
+                    roads.<br>
+                </p>
+            </article>
+            <article>
+                <h3>Takeaway</h3>
+                <p>
+                    From my research I can better inform myself when I am planning my project, there are several factors that I need to keep in mind.<br>
+                    From my research about FLARES, I can see that using existing data has issues, because of this I should try to detect my own data with my artifact. Some open-source data may be needed however it is important the data is high quality and reliable.<br>
+                    My project needs to be workable in remote areas irrespective of access to other technology, this can be done with the Micro:bit storing the data.<br>
+                </p>    
+            </article>
         </section>
 
         <section id="design">
             <h2>SYSTEM ARCHITECTURE: FIELD DEPLOYMENT</h2>
-            <h3>The Store and Dump Protocol</h3>
-            <p>
-                To ensure the Micro:bit can operate autonomously in the field without a constant computer connection, a **Store and Dump** protocol was designed. Data is continuously written to the Micro:bit's internal <span class="highlight-term">Flash Memory</span> and retrieved only when the device is connected and Button B is pressed.
-            </p>
-            <div class="code-block">
-            [MICROBIT] --(BATTERY POWERED)--> [FLASH LOG: data.txt]<br>
-            [USER INPUT: Button B] --(TRANSFER)--> [SERIAL CONSOLE]<br>
-            [PC] <span style="color: var(--accent-orange);">-</span>> [PYTHON MODEL]
-            </div>
+            <article>
+                <h3>The Store and Dump Protocol</h3>
+                <p>
+                    To ensure the Micro:bit can operate autonomously in the field without a constant computer
+                    connection, a **Store and Dump** protocol was designed. Data is continuously written to the
+                    Micro:bit's internal <span class="highlight-term">Flash Memory</span> and retrieved only when the
+                    device is connected and Button B is pressed.
+                </p>
+                <div class="code-block">
+                    [MICROBIT] --(BATTERY POWERED)--> [FLASH LOG: data.txt]<br>
+                    [USER INPUT: Button B] --(TRANSFER)--> [SERIAL CONSOLE]<br>
+                    [PC] <span style="color: var(--accent-orange);">-</span>> [PYTHON MODEL]
+                </div>
+            </article>
+            <article>
+                <h3>Embedded System Flow</h3>
+                <p>
+                    The system logic begins with a <span class="highlight-term">Calibration Phase</span> (Button A),
+                    where a baseline light level is set. The main loop then runs the adaptive risk calculation and
+                    updates the Halo output, providing the hiker with a clear visual warning.
+                </p>
+                <div class="media-box">
 
-            <h3>Embedded System Flow</h3>
-            <p>
-                The system logic begins with a <span class="highlight-term">Calibration Phase</span> (Button A), where a baseline light level is set. The main loop then runs the adaptive risk calculation and updates the Halo output, providing the hiker with a clear visual warning.
-            </p>
-            <div class="media-box">
-
-            </div>
+                </div>
+            </article>
         </section>
 
         <section id="create">
             <h2>DEVELOPMENT LOG: ADAPTIVE ALGORITHM</h2>
-            <h3>Core Algorithm: The Adaptive Risk Score</h3>
-            <p>
-                The Micro:bit constantly computes the adaptive risk. The <span class="highlight-term">Dry Day Counter</span> simulates the accumulation of environmental stress on the forest.
-            </p>
-            <div class="code-block">
-# Final_Risk = Base_Risk + (Dry_Day_Counter * 5)
-<br>
-# Visual Output: Map Final_Risk (0-100) to 24 LEDs:<br>
-# 0-33: Green | 34-66: Yellow | 67-100: <span style="color: var(--accent-orange);">RED ALERT</span>
-            </div>
-
-            <h3>Problem & Resolution: Sensor Variance</h3>
-            <p>
-                **Problem:** Readings were inconsistent depending on the starting location (e.g., inside a classroom vs. outside).<br>
-                **Resolution:** A **Calibration Mode** was implemented. The system now uses the light level recorded at the moment Button A is pressed as a dynamic baseline, ensuring the risk calculation is relative to the device's specific deployment environment.
-            </p>
-
-            <h3>Modelling Suite: What-If Scenarios</h3>
-            <p>
-                The Python analysis script leverages the <span class="highlight-term">Pandas</span> library to run advanced simulations.
-            </p>
-            <div class="code-block">
-# SCENARIO 1: CLIMATE CHANGE SIMULATION<br>
-df['Temp_SCENARIO'] = df['Temperature'] + 2  # Add 2°C to all logged data<br>
-new_risk = run_model(df['Temp_SCENARIO'])
-            </div>
+            <article>
+                <h3>Core Algorithm: The Adaptive Risk Score</h3>
+                <p>
+                    The Micro:bit constantly computes the adaptive risk. The <span class="highlight-term">Dry Day
+                        Counter</span> simulates the accumulation of environmental stress on the forest.
+                </p>
+                <div class="code-block">
+                    # Final_Risk = Base_Risk + (Dry_Day_Counter * 5)
+                    <br>
+                    # Visual Output: Map Final_Risk (0-100) to 24 LEDs:<br>
+                    # 0-33: Green | 34-66: Yellow | 67-100: <span style="color: var(--accent-orange);">RED ALERT</span>
+                </div>
+            </article>
+            <article>
+                <h3>Problem & Resolution: Sensor Variance</h3>
+                <p>
+                    **Problem:** Readings were inconsistent depending on the starting location (e.g., inside a classroom
+                    vs. outside).<br>
+                    **Resolution:** A **Calibration Mode** was implemented. The system now uses the light level recorded
+                    at the moment Button A is pressed as a dynamic baseline, ensuring the risk calculation is relative
+                    to the device's specific deployment environment.
+                </p>
+            </article>
+            <article>
+                <h3>Modelling Suite: What-If Scenarios</h3>
+                <p>
+                    The Python analysis script leverages the <span class="highlight-term">Pandas</span> library to run
+                    advanced simulations.
+                </p>
+                <div class="code-block">
+                    # SCENARIO 1: CLIMATE CHANGE SIMULATION<br>
+                    df['Temp_SCENARIO'] = df['Temperature'] + 2 # Add 2°C to all logged data<br>
+                    new_risk = run_model(df['Temp_SCENARIO'])
+                </div>
+            </article>
         </section>
 
         <section id="evaluate">
             <h2>FINAL EVALUATION: MISSION COMPLETE</h2>
-            <h3>Artefact Assessment</h3>
-            <p>
-                The **Firewatch Console** system is highly successful. The separation of the logging and analysis tasks ensures both robustness and complexity. The **Adaptive System** exceeded the basic requirement by simulating real-world processes.
-            </p>
-
-            <h3>Future Iterations</h3>
-            <p>
-                Improvements would focus on connectivity and precision:
+            <article>
+                <h3>Artefact Assessment</h3>
+                <p>
+                    The **Firewatch Console** system is highly successful. The separation of the logging and analysis
+                    tasks ensures both robustness and complexity. The **Adaptive System** exceeded the basic requirement
+                    by simulating real-world processes.
+                </p>
+            </article>
+            <article>
+                <h3>Future Iterations</h3>
+                <p>
+                    Improvements would focus on connectivity and precision:
                 <ol style="color: #ccc; margin-left: 20px;">
-                    <li style="margin-bottom: 5px;"><span style="color: var(--accent-orange);">Real-Time Data:</span> Integrate a **LoRaWAN module** for long-range, low-power telemetry, replacing the manual data dump.</li>
-                    <li style="margin-bottom: 5px;"><span style="color: var(--accent-orange);">Precision:</span> Add a dedicated **Humidity Sensor** to provide the core data required for professional-grade FWI calculation.</li>
-                    <li style="margin-bottom: 5px;"><span style="color: var(--accent-orange);">Data Integrity:</span> Add an **RTC (Real-Time Clock)** to log accurate timestamps, crucial for temporal analysis.</li>
+                    <li style="margin-bottom: 5px;"><span style="color: var(--accent-orange);">Real-Time Data:</span>
+                        Integrate a **LoRaWAN module** for long-range, low-power telemetry, replacing the manual data
+                        dump.</li>
+                    <li style="margin-bottom: 5px;"><span style="color: var(--accent-orange);">Precision:</span> Add a
+                        dedicated **Humidity Sensor** to provide the core data required for professional-grade FWI
+                        calculation.</li>
+                    <li style="margin-bottom: 5px;"><span style="color: var(--accent-orange);">Data Integrity:</span>
+                        Add an **RTC (Real-Time Clock)** to log accurate timestamps, crucial for temporal analysis.</li>
                 </ol>
-            </p>
-
-            <h3 style="margin-top: 40px;">Word Count Summary</h3>
-            <table>
-                <thead>
-                    <tr><th>Section</th><th>Word Count</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Total Word Count</td><td style="color: var(--accent-orange);">[TOTAL] / 2500</td></tr>
-                </tbody>
-            </table>
+                </p>
+            </article>
+            <article>
+                <h3 style="margin-top: 40px;">Word Count Summary</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Section</th>
+                            <th>Word Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Word Count</td>
+                            <td style="color: var(--accent-orange);">[TOTAL] / 2500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
         </section>
 
     </main>
 
     <footer>
         <p>LC CS 2026 // CANDIDATE ID: #357528</p>
-        <p style="color: #444; font-family: var(--font-mono); font-size: 0.7rem; margin-top: 5px;">SYSTEM STATUS: OFFLINE READOUT</p>
+        <p style="color: #444; font-family: var(--font-mono); font-size: 0.7rem; margin-top: 5px;">SYSTEM STATUS:
+            OFFLINE READOUT</p>
     </footer>
 
     <script>
@@ -173,5 +447,7 @@ new_risk = run_model(df['Temp_SCENARIO'])
         });
     </script>
     <script src="particles.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
