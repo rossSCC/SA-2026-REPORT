@@ -255,7 +255,7 @@
         line-height: 1.6;
         color: #ccc;
         max-height: calc(90vh - 80px);
-        overscroll-behavior: contain;     
+        overscroll-behavior: contain;
         -webkit-overflow-scrolling: touch;
     }
 
@@ -347,7 +347,8 @@
         margin-bottom: 15px;
     }
 
-    ul {
+    ul,
+    ol {
         margin-left: 25px;
     }
 
@@ -376,6 +377,11 @@
         color: var(--accent-two);
     }
 
+    code {
+        position: relative;
+        left: -150px;
+    }
+
     /* Media Box (Utilitarian Display) */
     .media-box {
         background-color: #222;
@@ -395,6 +401,10 @@
         font-size: 0.8rem;
         color: var(--accent-two);
         mix-blend-mode: difference;
+    }
+
+    #no-after::after {
+        content: "";
     }
 
     .media-box img {
@@ -456,9 +466,15 @@
             font-size: 2.5rem;
         }
 
+        nav {
+            width: 100%;
+            overflow-x: scroll;
+        }
+
         .nav-container {
             flex-direction: column;
             align-items: stretch;
+            width: 100%;
         }
 
         nav ul {
@@ -470,6 +486,16 @@
         }
 
         main {
-            padding: 20px;
+            padding: 10px 3px;
+            width: 95%;
+        }
+
+        .media-box {
+            height: 300px;
+        }
+
+        table {
+            overflow-x: scroll;
+            width: calc(75vw - 6px);
         }
     }

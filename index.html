@@ -7,6 +7,7 @@
     <title>FIREWATCH | 2026 Report</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <link rel="stylesheet" href="assets/prism-library/prism.css">
 </head>
 
 <body>
@@ -56,25 +57,30 @@
 
                     <div class="modal-body" data-lenis-prevent>
                         <p>
-                            Forests are some of the most important ecosystems on our planet. They give us clean air, store
+                            Forests are some of the most important ecosystems on our planet. They give us clean air,
+                            store
                             huge amounts of carbon, protect biodiversity, and help regulate water and temperature. But
-                            forests are under threat from climate change, wildfires, and biodiversity loss. As trees face
-                            droughts, higher temperatures, and diseases, their ability to support wildlife and store carbon is
+                            forests are under threat from climate change, wildfires, and biodiversity loss. As trees
+                            face
+                            droughts, higher temperatures, and diseases, their ability to support wildlife and store
+                            carbon is
                             reduced.<br>
                         </p>
-                        <img
-                            src="/assets/sec-trees.jpg"
+                        <img src="/assets/sec-trees.jpg"
                             alt="A forest with a clear view of the sky, showing the trees and the ground below."
-                            style="width: 50%; height: auto; margin: 20px 25%;"
-                            >
+                            style="width: 50%; height: auto; margin: 20px 25%;">
                         <cite>https://commons.wikimedia.org/wiki/File:Pine_trees_in_Wicklow_Mountains.jpg</cite>
                         <p>
                             Computer science provides tools to help us understand and respond to these challenges. By
-                            creating embedded systems, we can collect environmental data such as soil moisture, light, or
-                            temperature, and simulate real-world processes like canopy cover, drought cycles, or wildfire risk.
+                            creating embedded systems, we can collect environmental data such as soil moisture, light,
+                            or
+                            temperature, and simulate real-world processes like canopy cover, drought cycles, or
+                            wildfire risk.
                             We can also build computer-based models that test “what-if” scenarios, compare different
-                            outcomes, and make predictions about the future of forests, climate, biodiversity, and species
-                            populations. These insights help us to understand risks, anticipate future impacts, and explore
+                            outcomes, and make predictions about the future of forests, climate, biodiversity, and
+                            species
+                            populations. These insights help us to understand risks, anticipate future impacts, and
+                            explore
                             possible solutions.
                         </p>
                         <h3>The Task</h3>
@@ -83,12 +89,17 @@
                         <br>
                         <p>
                             For this project you are required to develop a functional embedded system that collects
-                            environmental data and simulates a real-world process related to the theme of forests and their
-                            influence on climate, biodiversity, water resources, species populations, carbon storage, wildfire
+                            environmental data and simulates a real-world process related to the theme of forests and
+                            their
+                            influence on climate, biodiversity, water resources, species populations, carbon storage,
+                            wildfire
                             risk, etc.<br>
-                            You will also develop a computer-based model that uses the collected data that can be combined
-                            with open-source data or simulated data (dataset created by you), to test “what-if” scenarios,
-                            carry out predictive analysis about future conditions, and compare outcomes. Finally, you will
+                            You will also develop a computer-based model that uses the collected data that can be
+                            combined
+                            with open-source data or simulated data (dataset created by you), to test “what-if”
+                            scenarios,
+                            carry out predictive analysis about future conditions, and compare outcomes. Finally, you
+                            will
                             incorporate a feedback mechanism to make the system adaptive, allowing either your embedded
                             system or your model to respond automatically to changing conditions.
                         </p>
@@ -145,13 +156,13 @@
                     <li>The model will calculate the fire risk score using the temperature, light intensity and rain
                         data</li>
                     <!-- not counted in word count -->
-                    <div class="code-block"><br>
+                    <pre class="code-block"><code class="language-python">
                         # Fire Risk Score Formula = (Temperature × 2) + (Scaled Down Light Intensity<sup>3</sup> × 67) ±
                         (Rainfall modifier)<br>
                         base = float(micro.at[i, 'Temp'] * 2.0) + (67 * ((float(micro.at[i, 'Light']) / 230)**3))<br>
                         final = base + rain_modifier<br>
-                    </div>
-                
+                    </code></pre>
+
                     <li>The rainfall modifier is a value from +20 to -30 depending on rain ammounts.</li>
                 </ul>
                 <br>
@@ -189,7 +200,7 @@
         <section id="research">
             <h2>RESEARCH AND INVESTIGATION</h2>
             <article>
-                <h3>- The Problem:</h3>
+                <h3>The Problem:</h3>
                 <br>
                 <hr>
                 <br>
@@ -199,7 +210,7 @@
                         recognised for their role in conserving species and ecosystems. This represents a major loss to
                         biodiversity and forest health.</li>
                     <li>Additionally, there is a considerable risk to hikers and campers. For example, over 25,000
-                        people climbed Croagh Patrick on Reek Sunday last year. A significant wildfire on that day could 
+                        people climbed Croagh Patrick on Reek Sunday last year. A significant wildfire on that day could
                         put thousands at risk and add a tremendous strain on the Search and Rescue
                         services.</li>
                     <li>Currently, in Ireland there is no warning system in place in our forest parks to warn any hikers
@@ -215,7 +226,7 @@
                 </div>
             </article>
             <article>
-                <h3>- Existing Solutions:</h3>
+                <h3>Existing Solutions:</h3>
                 <br>
                 <hr>
                 <br>
@@ -223,8 +234,10 @@
                 <ul>
                     <li>A project from University College Cork called <strong>FLAREs</strong> (Fires, Land and
                         Atmospheric Remote Sensing of EmissionS) <q>“aims to develop systematic approaches to the
-                        acquisition and collation of a range of data on agricultural and uncontrolled wildland burning
-                        burn events from satellite datasets.”</q> This data could be used to feed into a warning system
+                            acquisition and collation of a range of data on agricultural and uncontrolled wildland
+                            burning
+                            burn events from satellite datasets.”</q> This data could be used to feed into a warning
+                        system
                         however it has some issues, for example,
                         <ul>
                             <li>Each overpass by the satellite will record every fire as a new fire creating duplicates.
@@ -244,7 +257,7 @@
                 </p>
             </article>
             <article>
-                <h3>- Additional Research</h3>
+                <h3>Additional Research</h3>
                 <br>
                 <hr>
                 <br>
@@ -274,8 +287,8 @@
                     <thead>
                         <tr>
                             <th>Pixels</th>
-                    
-                            
+
+
                             <th>Percentage Coverage</th>
                         </tr>
                     </thead>
@@ -317,36 +330,42 @@
                 <hr>
                 <br>
                 <p>
-                    From my research I can better inform myself when I am planning my project, there are several factors that I need to keep in mind.<br>
-                    From my research about FLARES, I can see that using existing data has issues, because of this I should try to detect my own data with my artifact. Some open-source data may be needed however it is important the data is high quality and reliable.<br>
-                    My project needs to be workable in remote areas irrespective of access to other technology, this can be done with local data storing.<br>
-                </p>    
+                    From my research I can better inform myself when I am planning my project, there are several factors
+                    that I need to keep in mind.<br>
+                    From my research about FLARES, I can see that using existing data has issues, because of this I
+                    should try to detect my own data with my artifact. Some open-source data may be needed however it is
+                    important the data is high quality and reliable.<br>
+                    My project needs to be workable in remote areas irrespective of access to other technology, this can
+                    be done with local data storing.<br>
+                </p>
             </article>
         </section>
 
         <section id="design">
             <h2>PLAN AND DESIGN</h2>
-            <article> 
-                <h3>- Design Objectives</h3>
+            <article>
+                <h3>Design Objectives</h3>
                 <br>
                 <hr>
                 <br>
                 <p>
-                    <ul>
-                        <li><strong>Autonomy:</strong> The device should run on batteries and store data itself.</li>
-                        <li><strong>Independence:</strong> My device should collect its own environmental data.</li>
-                        <li><strong>Easy to use:</strong> My artifact must be easy to set up.</li>
-                        <li><strong>Effective warning:</strong> As a disaster risk warning system, it must be effective at alerting people if there is significant risk.</li>
-                    </ul>
+                <ul>
+                    <li><strong>Autonomy:</strong> The device should run on batteries and store data itself.</li>
+                    <li><strong>Independence:</strong> My device should collect its own environmental data.</li>
+                    <li><strong>Easy to use:</strong> My artifact must be easy to set up.</li>
+                    <li><strong>Effective warning:</strong> As a disaster risk warning system, it must be effective at
+                        alerting people if there is significant risk.</li>
+                </ul>
                 </p>
             </article>
             <article>
-                <h3>- Technologies Used</h3>
+                <h3>Technologies Used</h3>
                 <br>
                 <hr>
                 <br>
                 <p>
-                    For this project I needed a microcontroller, my two main choices were between a raspberry pi pico or a BBC Micro:bit.
+                    For this project I needed a microcontroller, my two main choices were between a raspberry pi pico or
+                    a BBC Micro:bit.
                 </p>
                 <table>
                     <thead>
@@ -358,39 +377,48 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Cost</td><td>€5.50</td><td>€15.97</td>
+                            <td>Cost</td>
+                            <td>€5.50</td>
+                            <td>€15.97</td>
                         </tr>
                         <tr>
-                            <td>Has GPIO pins</td><td>Yes (28)</td><td>Yes (20)</td>
+                            <td>Has GPIO pins</td>
+                            <td>Yes (28)</td>
+                            <td>Yes (20)</td>
                         </tr>
                         <tr>
-                            <td>Lead time</td><td>1 – 2 weeks</td><td>0 (in school)</td>
+                            <td>Lead time</td>
+                            <td>1 – 2 weeks</td>
+                            <td>0 (in school)</td>
                         </tr>
                         <tr>
-                            <td>Can be battery powered</td><td>Yes</td><td>Yes</td>
+                            <td>Can be battery powered</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
                         </tr>
                         <tr>
-                            <td>Runs python</td><td>Yes</td><td>Yes</td>
+                            <td>Runs python</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
                         </tr>
                     </tbody>
                 </table>
                 <p>
-                    From my table it is clear the Micro:bit and pi Pico are very comparable. The raspberry pi is cheaper however it would require waiting for the part to be delivered. Because my school already has micro:bits on hand we can use at no cost, from day one, I chose to use the micro:bit.
+                    From my table it is clear the Micro:bit and pi Pico are very comparable. The raspberry pi is cheaper
+                    however it would require waiting for the part to be delivered. Because my school already has
+                    micro:bits on hand we can use at no cost, from day one, I chose to use the micro:bit.
                 </p>
                 <div class="media-box" style="background: #eee;">
-                    <img
-                        src="/assets/microbit.png"
-                        alt="Micro:bit v2"
-                        style="object-fit: contain;"
-                        >
+                    <img src="/assets/microbit.png" alt="Micro:bit v2" style="object-fit: contain;">
                 </div>
             </article>
             <article>
-                <h3>- Project options</h3>
+                <h3>Project options</h3>
                 <br>
                 <hr>
                 <br>
-                <p>Since I have identified forest fires as a severe disaster, I need to identify what environmental variables I need to measure to model the risk of a forest fire. </p> 
+                <p>Since I have identified forest fires as a severe disaster, I need to identify what environmental
+                    variables I need to measure to model the risk of a forest fire. </p>
                 <table>
                     <thead>
                         <tr>
@@ -403,19 +431,24 @@
                     <tbody>
                         <tr>
                             <td>Temperature and Humidity</td>
-                            <td>Elevated temperatures combined with low humidity create dry conditions that make vegetation highly flammable.</td>
+                            <td>Elevated temperatures combined with low humidity create dry conditions that make
+                                vegetation highly flammable.</td>
                             <td>This project would require an added sensor which would add to the project.</td>
-                            <td>While there is a correlation between humidity and vegetation moisture, Ireland is a humid country meaning the difference between high risk and low risk is slim leading to a percentage error effect.</td>
+                            <td>While there is a correlation between humidity and vegetation moisture, Ireland is a
+                                humid country meaning the difference between high risk and low risk is slim leading to a
+                                percentage error effect.</td>
                         </tr>
                         <tr>
                             <td>Temperature and Light intensity</td>
-                            <td>A hot day dries out vegetation and intense light gives the energy needed to start a fire.</td>
+                            <td>A hot day dries out vegetation and intense light gives the energy needed to start a
+                                fire.</td>
                             <td>Simplicity of design, both variables can be measured on the micro bit.</td>
                             <td>I would need to add something to my embedded system. So, it is not too simple.</td>
                         </tr>
                         <tr>
                             <td>Light intensity and wind speed</td>
-                            <td>High brightness means increased likelihood of fire, and strong wind means even a little fire will grow rapidly.</td>
+                            <td>High brightness means increased likelihood of fire, and strong wind means even a little
+                                fire will grow rapidly.</td>
                             <td>Wind adds a unique element of fire spread.</td>
                             <td>Only one variable to calculate fire risk.</td>
                         </tr>
@@ -423,21 +456,28 @@
                 </table>
                 <p>
                     <span class="highlight-term">Justification</span><br>
-                    Measuring temperature and light intensity is the most logical choice to me, it allows me to natively collect data which should be more reliable and easier to implement. This approach has a clear correlation between environment and fire risk. The downside is easily mitigated by adding an added display or output device to convey risk.
+                    Measuring temperature and light intensity is the most logical choice to me, it allows me to natively
+                    collect data which should be more reliable and easier to implement. This approach has a clear
+                    correlation between environment and fire risk. The downside is easily mitigated by adding an added
+                    display or output device to convey risk.
                 </p>
             </article>
             <article>
-                <h3>- Project stakeholders and end users</h3>
+                <h3>Project stakeholders and end users</h3>
                 <br>
                 <hr>
                 <br>
                 <p>
                     <span class="highlight-term">End Users:</span>
-                    <ul>
-                        <li>As the embedded system would be placed in a forest to warn campers and hikers, they are the end users.</li>
-                        <li>A park ranger or other forrestry personell might rely on this system to know when to be attentive to any possible fires and when to alert hikers entering an area of considerable risk.</li>
-                        <li>Meteorologists, arborists, and ecologists cold use the data gathered by the monitoring system to better existing simulations and understand nature's reaction to fires.</li>
-                    </ul>
+                <ul>
+                    <li>As the embedded system would be placed in a forest to warn campers and hikers, they are the end
+                        users.</li>
+                    <li>A park ranger or other forestry personnel might rely on this system to know when to be
+                        attentive to any possible fires and when to alert hikers entering an area of considerable risk.
+                    </li>
+                    <li>Meteorologists, arborists, and ecologists cold use the data gathered by the monitoring system to
+                        better existing simulations and understand nature's reaction to fires.</li>
+                </ul>
                 </p>
                 <table>
                     <thead>
@@ -470,77 +510,294 @@
                 <br>
                 <p>
                     <span class="highlight-term">Potential Stakeholders:</span>
-                    <ul>
-                        <li>Met Eireann
-                            <ul>
-                                <li>Might want this system to Provide weather data and forecasts that feed into fire risk assessment.</li>
-                                <li>Interested in integrating the system with existing networks.</li>
-                            </ul>
-                        </li>
-                        <br>
-                        <li>Government / Local Authorities / County Councils 
-                            <ul>
-                                <li>Departments responsible for civil protection, forestry, and environmental safety.</li>
-                                <li>Interested in reducing wildfire incidents, protecting property, and ensuring public safety.</li>
-                            </ul>
-                        </li>
-                        <br>
-                        <li>Environmental Protection Agency (EPA) 
-                            <ul>
-                                <li>Require accurate environmental data (temperature, rainfall, dryness) for monitoring and compliance.</li>
-                                <lu>Interested in how fire risk affects ecosystems and biodiversity.</lu>
-                            </ul>
-                        </li>
-                    </ul>
+                <ul>
+                    <li>Met Eireann
+                        <ul>
+                            <li>Might want this system to Provide weather data and forecasts that feed into fire risk
+                                assessment.</li>
+                            <li>Interested in integrating the system with existing networks.</li>
+                        </ul>
+                    </li>
+                    <br>
+                    <li>Government / Local Authorities / County Councils
+                        <ul>
+                            <li>Departments responsible for civil protection, forestry, and environmental safety.</li>
+                            <li>Interested in reducing wildfire incidents, protecting property, and ensuring public
+                                safety.</li>
+                        </ul>
+                    </li>
+                    <br>
+                    <li>Environmental Protection Agency (EPA)
+                        <ul>
+                            <li>Require accurate environmental data (temperature, rainfall, dryness) for monitoring and
+                                compliance.</li>
+                            <li>Interested in how fire risk affects ecosystems and biodiversity.</li>
+                        </ul>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    <span class="highlight-term">RACI diagram</span><br>
+                    The stakeholder and end users can be used to make a RACI diagram.
+                <table>
+                    <caption>RACI (Responsable, Accountable, Consulted, Informed) Diagram</caption>
+                    <thead>
+                        <tr>
+                            <th>Part</th>
+                            <th>Ranger & Ecologists</th>
+                            <th>Fire Brigade</th>
+                            <th>Met Eireann</th>
+                            <th>Government / EPA</th>
+                            <th>Local Authorities</th>
+                            <th>Scouts & Hiking Groups</th>
+                            <th>Public</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Micro:bit warning</th>
+                            <td>C I</td>
+                            <td>C I</td>
+                            <td>C</td>
+                            <td>A C I</td>
+                            <td>R C I</td>
+                            <td>C I</td>
+                            <td>I</td>
+                        </tr>
+                        <tr>
+                            <th>Simulation Software</th>
+                            <td>I</td>
+                            <td>C I</td>
+                            <td>R C</td>
+                            <td>A I</td>
+                            <td>I</td>
+                            <td>I</td>
+                            <td>I</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="8">A = Accountable, R = Responsible, C = Consulted, I = Informed</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
                 </p>
             </article>
+            <article>
+                <h3>System architecture</h3>
+                <br>
+                <hr>
+                <br>
+                <p>
+                    The project is split into two distinct parts:<br>
+                <ol>
+                    <li>
+                        <span class="highlight-term">Embedded system:</span><br>
+                        <strong>Hardware:</strong>
+                        <ul>
+                            <li>I knew I did not want to just use the microbit for the project, however the temperature
+                                and light sensors are both built in. Because of this I looked at risk display methods.
+                            </li>
+                            <li>Fortunately, the output device would be covered by the school.</li>
+                            <li>My two primary options were the Kitronik Traffic Light, or the Kitronik ZIP LED halo.
+                            </li>
+                        </ul>
+                        <div class="media-row">
+                            <div class="media-box">
+                                <img src="/assets/traffic-light.png" alt="Kitronik Traffic Light"
+                                    style="padding: 50px;">
+                            </div>
+                            <div class="media-box">
+                                <img src="/assets/halo.png" alt="Kitronik ZIP LED Halo"
+                                    style="padding: 50px; object-fit: contain;">
+                            </div>
+                        </div>
+                        <ul>
+                            <li>I chose the Halo LEDs as I feel I would be able to make a better indicator of risk.</li>
+                        </ul>
+                        <br>
+                        <strong>Software:</strong>
+                        <ul>
+                            <li>Micro:bit runs on micro python; this has the same syntax as regular python.</li>
+                            <li>I began with creating a flowchart for the operations of the Microbit before moving to
+                                developing the final program.</li>
+                        </ul>
+                        <div class="media-box">
+                            <img src="/assets/micro-flow.png" alt="Flowchart of the Microbit program">
+                        </div>
+                    </li>
+                    <br>
+                    <hr><br>
+                    <li>
+                        <span class="highlight-term">Simulation side:</span><br>
+                        I realized that relying only on two variables lacked complexity and could cause false positives.
+                        For
+                        instance, if a day is hot and bright but experienced heavy morning rain, my local sensors would
+                        incorrectly report a high fire danger. To solve this, I designed a hybrid system integrating the
+                        Met Eireann weather API to provide rainfall amounts each day.
+                        <br>
+                        <br><strong>System Flow:</strong><br>
+                        The Simulation model can be understood from the system diagram. We see the microbit feeds in the
+                        sensor data, and the API returns its CSV on request.<br>
+                        The program flow is controlled by the main menu script, this handles tasks and data transfer
+                        between algorithms.<br>
+                        I broke the program into two other files, one to handle the incoming data by ensuring it exists
+                        and is in a usable format.<br>
+                        The other simulation script is what calculates the risk for each day and infers meaningful data
+                        from the three data sources.<br>
+                        <div class="media-box" style="background-color: white;">
+                            <img src="/assets/system-diagram.png" alt="System diagram of the simulation model"
+                                style="object-fit: contain;">
+                        </div>
+                    </li>
+                </ol>
+                </p>
         </section>
 
         <section id="create">
-            <h2>DEVELOPMENT LOG: ADAPTIVE ALGORITHM</h2>
+            <h2>CREATE</h2>
             <article>
-                <h3>Core Algorithm: The Adaptive Risk Score</h3>
+                <h3>Time management</h3>
                 <br>
                 <hr>
                 <br>
+                <p>I used a Gantt chart to manage my time and ensure I was on track to complete the project.</p>
+                <div class="media-box">
+                    <img src="/assets/gantt.png" alt="Gantt chart of the project timeline">
+                </div>
+            </article>
+            <article>
+                <h3>Key Milestones</h3>
+                <br>
+                <hr><br>
+                <table>
+                    <caption>These Key Milestones helped me stay on track and know I was progressing.</caption>
+                    <thead>
+                        <tr>
+                            <th>Milestone</th>
+                            <th>Description</th>
+                            <th>Date Achieved</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>M1: Hardware Prototype</td>
+                            <td>Setting up microbit and getting and initial program to show the temperature and light
+                                intensity. Displaying solid colours on the halo LED.</td>
+                            <td>Week 5</td>
+                        </tr>
+                        <tr>
+                            <td>M2: Working Embedded system</td>
+                            <td>When I got my embedded system to be fully working, including the LED warning display and
+                                the calibration.</td>
+                            <td>Week 7</td>
+                        </tr>
+                        <tr>
+                            <td>M3: Adding API Functionality</td>
+                            <td>Connecting Python to the Met Éireann Station 9820 and handling the data.</td>
+                            <td>Week 8</td>
+                        </tr>
+                        <tr>
+                            <td>M4: Simulation model Formula</td>
+                            <td>Having a usable simulation that outputs an accurate risk level.</td>
+                            <td>Week 9</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article>
+                <h3>Iterative unit testing</h3>
+                <br>
+                <hr><br>
                 <p>
-                    The Micro:bit constantly computes the adaptive risk. The <span class="highlight-term">Dry Day
-                        Counter</span> simulates the accumulation of environmental stress on the forest.
-                </p>
-                <div class="code-block">
-                    # Final_Risk = Base_Risk + (Dry_Day_Counter * 5)
+                    Throughout the development I tested my code as I followed a waterfall development approach. As this
+                    project was no small task a waterfall methodoligy allowed me to keep track of progress using the key
+                    milestones outlined above. By ensuring no issues went unchecked and silent it saved me a lot of
+                    possible headace in the long run.
                     <br>
-                    # Visual Output: Map Final_Risk (0-100) to 24 LEDs:<br>
-                    # 0-33: Green | 34-66: Yellow | 67-100: <span style="color: var(--accent-orange);">RED ALERT</span>
+                    To test I established what inputs and outputs I have and the expected values for each.<br>From this
+                    I can test
+                    my input handling.<br>
+                    I also defined what each part of my program should, and what it should not do so I can test those
+                    parts too.
+                </p>
+                <div class="media-box" id="no-after" style="height: auto;">
+                    <img src="/assets/unit-testing.png" alt="Unit testing table, 8 tests, all passed"
+                        style="object-fit: contain;">
                 </div>
             </article>
             <article>
-                <h3>Problem & Resolution: Sensor Variance</h3>
+                recent_rain = float(weather.tail(len(micro))['rain'])
+                <h3>Problems encountered</h3>
                 <br>
-                <hr>
-                <br>
-                <p>
-                    **Problem:** Readings were inconsistent depending on the starting location (e.g., inside a classroom
-                    vs. outside).<br>
-                    **Resolution:** A **Calibration Mode** was implemented. The system now uses the light level recorded
-                    at the moment Button A is pressed as a dynamic baseline, ensuring the risk calculation is relative
-                    to the device's specific deployment environment.
-                </p>
+                <hr<br>
+                    <p>
+                        <span class="highlight-term">- Met Eireann API integration.</span><br><br>
+                        <strong>The problem:</strong>
+                    <ul>
+                        <li>During integration I initially tried to read the first line of the microbit data and the API
+                            data using Pandas to get the column headers. While the microbit returned the expected
+                            result, reading the “rain” column of the API data returned a missing column error.</li>
+                    </ul>
+                    <pre class="code-block"><code class="language-python">
+                        /home/runner/workspace/data_manager.py:67: UserWarning: column ‘rain’ not found
+                    </code></pre>
+                    <br>
+                    <strong>Steps taken:</strong>
+                    <ul>
+                        <li>To find the cause of this error I opened the API URL in my browser, this downloaded the CSV
+                            file so I could view it. </li>
+                        <li>When I opened the file, I found that the API returns a header of 10 rows containing meta
+                            data such as station name, height above sea level, location and more. I also found that
+                            simply skipping this header was not sufficient to fix this issue.</li>
+                        <li>The Met Eireann API retuns data in a historical format where the newest entry is last in the
+                            file. The problem with this is that unlike the microbit data, this file has rainfall
+                            measurements from the 1st of May 1965! That means to find the relevant data I would have to
+                            read the file backwards as simply going to a fixed position would slowly drift away from the
+                            current date.</li>
+                        <li>To resolve this, I used a Pandas function to get the last few rows, equal to the length of
+                            the Micro:bit data.
+                        </li>
+                    </ul>
+                    <pre class="code-block"><code class="language-python">
+                        recent_rain = float(weather.tail(len(micro))['rain'])
+                    </code></pre>
+                    <br>
+                    <ul>
+                        <li>And to deal with the Meta-data header I modified the <em>read_csv()</em> parameters to
+                            explicitly skip the first 10 rows <em>(skiprows=10)</em>
+                    </ul>
+                    </p>
+                    <br>
+                    <p>
+                        <span class="highlight-term">- Other problems</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Problem</th>
+                                    <th>Action taken</th>
+                                    <th>Result</th>
+                                    <th>Further action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Matplotlib plt.show() not working, canvas error</td>
+                                    <td>I researched the error and tried running the program on a different code editor</td>
+                                    <td>Graph displayed as expected</td>
+                                    <td>I added the option to save any graph as an image</td>
+                                </tr>
+                                <tr>
+                                    <td>Using a standard trailing average of rainfall for each day's risk calculation resulted in old data being too prominent</td>
+                                    <td>I modified the rainfall modifier code to calculate a weighted average; this means more recent data has greater effect</td>
+                                    <td>Large quantities of rain from a few days ago had a dampened impact on the rain modifier</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
             </article>
             <article>
-                <h3>Modelling Suite: What-If Scenarios</h3>
-                <br>
-                <hr>
-                <br>
-                <p>
-                    The Python analysis script leverages the <span class="highlight-term">Pandas</span> library to run
-                    advanced simulations.
-                </p>
-                <div class="code-block">
-                    # SCENARIO 1: CLIMATE CHANGE SIMULATION<br>
-                    df['Temp_SCENARIO'] = df['Temperature'] + 2 # Add 2°C to all logged data<br>
-                    new_risk = run_model(df['Temp_SCENARIO'])
-                </div>
             </article>
         </section>
 
@@ -584,18 +841,26 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Section</th><th>Word Count</th>
+                            <th>Section</th>
+                            <th>Word Count</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Project Brief</td><td>384</td>
+                            <td>Project Brief</td>
+                            <td>384</td>
                         </tr>
                         <tr>
-                            <td>Research & Investigation</td><td>489</td>
+                            <td>Research & Investigation</td>
+                            <td>489</td>
                         </tr>
                         <tr>
-                            <td>Total Word Count</td><td style="color: var(--accent-orange);">[TOTAL] / 2500</td>
+                            <td>Design</td>
+                            <td>641</td>
+                        </tr>
+                        <tr>
+                            <td>Total Word Count</td>
+                            <td style="color: var(--accent-orange);">[TOTAL] / 2500</td>
                         </tr>
                     </tbody>
                 </table>
@@ -635,6 +900,7 @@
     </script>
     <script src="particles.js"></script>
     <script src="main.js"></script>
+    <script src="/assets/prism-library/prism.js"></script>
 </body>
 
 </html>
