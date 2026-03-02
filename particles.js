@@ -1,5 +1,5 @@
     // --- PARTICLES ---
-    // this is made on hopes and prayer that is works ive never used canvas before
+    // this is made on hopes and prayer that is works
 
     // Get the canvas element and its context
     const canvas = document.getElementById('hero-canvas');
@@ -14,7 +14,7 @@
     }
     setCanvasSize();
 
-    // Create Particle Object
+    // Create Each Particle Object
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
@@ -34,7 +34,7 @@
             ctx.fill();
         }
 
-        // Check particle position, check mouse position, move the particle, draw the particle
+        // Check particle position, move the particle, draw the particle
         update() {
             // Check if particle is still within canvas
             if (this.x > canvas.width || this.x < 0) {
@@ -85,7 +85,7 @@
                 // If particles are closer than 150px, draw a line
                 if (distance < (canvas.width/7) * (canvas.height/7)) {
                     opacityValue = 1 - (distance / 20000);
-                    ctx.strokeStyle = 'rgba(255, 102, 0,' + opacityValue + ')'; // Orange connection lines
+                    ctx.strokeStyle = 'rgba(255, 102, 0,' + opacityValue + ')';
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(particlesArray[a].x, particlesArray[a].y);

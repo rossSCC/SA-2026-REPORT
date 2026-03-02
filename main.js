@@ -1,7 +1,7 @@
 // Smooth Scroll
-let lenis; // Declare the variable first
+let lenis;
 
-// Check if the Lenis library successfully loaded
+// Check Lenis library loaded
 if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
         duration: 1.2,
@@ -22,21 +22,20 @@ if (typeof Lenis !== 'undefined') {
     console.warn("Lenis library not loaded. Running in offline mode without smooth scrolling.");
 }
 
+
 // Modal Functions
 function openModal() {
-    // Only call lenis.stop() if lenis was successfully created
+    // Only do if lenis wasactually created
     if (lenis) {
         lenis.stop();
     }
-    document.body.style.overflow = "hidden"; // 🔒 lock background
+    document.body.style.overflow = "hidden";
 
-    // 1. Define the modal variable first
     const modal = document.getElementById("projectModal");
     modal.style.display = "flex";
 }
 
 function closeModal() {
-    // Only call lenis.start() if lenis was successfully created
     if (lenis) {
         lenis.start();
     }
@@ -44,7 +43,7 @@ function closeModal() {
     document.body.style.overflow = ""; // restore scroll
 }
 
-// Close when clicking outside modal
+//when clicking outside modal
 window.onclick = function(event) {
     const modal = document.getElementById("projectModal");
     if (event.target === modal) {
@@ -52,7 +51,7 @@ window.onclick = function(event) {
     }
 }
 
-// Close on ESC key
+//ESC key
 document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") {
         closeModal();

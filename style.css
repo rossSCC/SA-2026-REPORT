@@ -356,7 +356,8 @@
         text-decoration: none;
         color: var(--text-light);
     }
-    a:hover{
+
+    a:hover {
         color: var(--accent-orange);
     }
 
