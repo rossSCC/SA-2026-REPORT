@@ -352,6 +352,14 @@
         margin-left: 25px;
     }
 
+    a {
+        text-decoration: none;
+        color: var(--text-light);
+    }
+    a:hover{
+        color: var(--accent-orange);
+    }
+
     /* --- STYLE ELEMENTS --- */
 
     /* Highlighting Key Terms */
@@ -444,6 +452,12 @@
         border: 1px solid var(--border-color);
         padding: 10px;
         color: #ccc;
+    }
+
+    .yes {
+        text-align: center;
+        background-color: seagreen;
+        color: white
     }
 
     /* --- FOOTER --- */

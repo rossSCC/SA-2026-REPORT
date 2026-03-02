@@ -1,24 +1,33 @@
 // Smooth Scroll
-const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    direction: 'vertical',
-    gestureDirection: 'vertical',
-    smooth: true,
-    mouseMultiplier: 1,
-    touchMultiplier: 2,
-})
+let lenis; // Declare the variable first
 
-function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf)
+// Check if the Lenis library successfully loaded
+if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        touchMultiplier: 2,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+} else {
+    console.warn("Lenis library not loaded. Running in offline mode without smooth scrolling.");
 }
-requestAnimationFrame(raf)
-
 
 // Modal Functions
 function openModal() {
-    lenis.stop();
+    // Only call lenis.stop() if lenis was successfully created
+    if (lenis) {
+        lenis.stop();
+    }
     document.body.style.overflow = "hidden"; // 🔒 lock background
 
     // 1. Define the modal variable first
@@ -27,7 +36,10 @@ function openModal() {
 }
 
 function closeModal() {
-    lenis.start();
+    // Only call lenis.start() if lenis was successfully created
+    if (lenis) {
+        lenis.start();
+    }
     document.getElementById("projectModal").style.display = "none";
     document.body.style.overflow = ""; // restore scroll
 }
@@ -46,4 +58,3 @@ document.addEventListener("keydown", function(event) {
         closeModal();
     }
 });
-
