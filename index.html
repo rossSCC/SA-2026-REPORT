@@ -188,7 +188,7 @@
                 </ul>
                 <br>
                 <ul>
-                    <li>My <strong>Python model</strong> will adapt to the data given, It uses a rolling avgerage to
+                    <li>My <strong>Python model</strong> will adapt to the data given, It uses a rolling average to
                         analise the rainfall data instead of just looking at a sum of the data or a day by day
                         perspective.</li>
                     <li>This is <strong>virtual</strong> feedback the model adjusts automatically.</li>
@@ -712,9 +712,9 @@
                 <hr><br>
                 <p>
                     Throughout the development I tested my code as I followed a waterfall development approach. As this
-                    project was no small task a waterfall methodoligy allowed me to keep track of progress using the key
+                    project was no small task a waterfall methodology allowed me to keep track of progress using the key
                     milestones outlined above. By ensuring no issues went unchecked and silent it saved me a lot of
-                    possible headace in the long run.
+                    possible headache in the long run.
                     <br>
                     To test I established what inputs and outputs I have and the expected values for each.<br>From this
                     I can test
@@ -728,83 +728,216 @@
                 </div>
             </article>
             <article>
-                recent_rain = float(weather.tail(len(micro))['rain'])
                 <h3>Problems encountered</h3>
                 <br>
-                <hr<br>
-                    <p>
-                        <span class="highlight-term">- Met Eireann API integration.</span><br><br>
-                        <strong>The problem:</strong>
-                    <ul>
-                        <li>During integration I initially tried to read the first line of the microbit data and the API
-                            data using Pandas to get the column headers. While the microbit returned the expected
-                            result, reading the “rain” column of the API data returned a missing column error.</li>
-                    </ul>
-                    <pre class="code-block"><code class="language-python">
+                <hr><br>
+                <p>
+                    <span class="highlight-term">- Met Eireann API integration.</span><br><br>
+                    <strong>The problem:</strong>
+                <ul>
+                    <li>During integration I initially tried to read the first line of the microbit data and the API
+                        data using Pandas to get the column headers. While the microbit returned the expected
+                        result, reading the “rain” column of the API data returned a missing column error.</li>
+                </ul>
+                <pre class="code-block"><code class="language-python">
                         /home/runner/workspace/data_manager.py:67: UserWarning: column ‘rain’ not found
                     </code></pre>
-                    <br>
-                    <strong>Steps taken:</strong>
-                    <ul>
-                        <li>To find the cause of this error I opened the API URL in my browser, this downloaded the CSV
-                            file so I could view it. </li>
-                        <li>When I opened the file, I found that the API returns a header of 10 rows containing meta
-                            data such as station name, height above sea level, location and more. I also found that
-                            simply skipping this header was not sufficient to fix this issue.</li>
-                        <li>The Met Eireann API retuns data in a historical format where the newest entry is last in the
-                            file. The problem with this is that unlike the microbit data, this file has rainfall
-                            measurements from the 1st of May 1965! That means to find the relevant data I would have to
-                            read the file backwards as simply going to a fixed position would slowly drift away from the
-                            current date.</li>
-                        <li>To resolve this, I used a Pandas function to get the last few rows, equal to the length of
-                            the Micro:bit data.
-                        </li>
-                    </ul>
-                    <pre class="code-block"><code class="language-python">
+                <br>
+                <strong>Steps taken:</strong>
+                <ul>
+                    <li>To find the cause of this error I opened the API URL in my browser, this downloaded the CSV
+                        file so I could view it. </li>
+                    <li>When I opened the file, I found that the API returns a header of 10 rows containing meta
+                        data such as station name, height above sea level, location and more. I also found that
+                        simply skipping this header was not sufficient to fix this issue.</li>
+                    <li>The Met Eireann API returns data in a historical format where the newest entry is last in the
+                        file. The problem with this is that unlike the microbit data, this file has rainfall
+                        measurements from the 1st of May 1965! That means to find the relevant data I would have to
+                        read the file backwards as simply going to a fixed position would slowly drift away from the
+                        current date.</li>
+                    <li>To resolve this, I used a Pandas function to get the last few rows, equal to the length of
+                        the Micro:bit data.
+                    </li>
+                </ul>
+                <pre class="code-block"><code class="language-python">
                         recent_rain = float(weather.tail(len(micro))['rain'])
                     </code></pre>
-                    <br>
-                    <ul>
-                        <li>And to deal with the Meta-data header I modified the <em>read_csv()</em> parameters to
-                            explicitly skip the first 10 rows <em>(skiprows=10)</em>
-                    </ul>
-                    </p>
-                    <br>
-                    <p>
-                        <span class="highlight-term">- Other problems</span>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Problem</th>
-                                    <th>Action taken</th>
-                                    <th>Result</th>
-                                    <th>Further action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Matplotlib plt.show() not working, canvas error</td>
-                                    <td>I researched the error and tried running the program on a different code editor</td>
-                                    <td>Graph displayed as expected</td>
-                                    <td>I added the option to save any graph as an image</td>
-                                </tr>
-                                <tr>
-                                    <td>Using a standard trailing average of rainfall for each day's risk calculation resulted in old data being too prominent</td>
-                                    <td>I modified the rainfall modifier code to calculate a weighted average; this means more recent data has greater effect</td>
-                                    <td>Large quantities of rain from a few days ago had a dampened impact on the rain modifier</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <br>
+                <ul>
+                    <li>And to deal with the Meta-data header I modified the <em>read_csv()</em> parameters to
+                        explicitly skip the first 10 rows <em>(skiprows=10)</em>
+                </ul>
+                </p>
+                <br>
+                <p>
+                    <span class="highlight-term">- Other problems</span>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Problem</th>
+                            <th>Action taken</th>
+                            <th>Result</th>
+                            <th>Further action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Matplotlib plt.show() not working, canvas error</td>
+                            <td>I researched the error and tried running the program on a different code editor</td>
+                            <td>Graph displayed as expected</td>
+                            <td>I added the option to save any graph as an image</td>
+                        </tr>
+                        <tr>
+                            <td>Using a standard trailing average of rainfall for each day's risk calculation resulted
+                                in old data being too prominent</td>
+                            <td>I modified the rainfall modifier code to calculate a weighted average; this means more
+                                recent data has greater effect</td>
+                            <td>Large quantities of rain from a few days ago had a dampened impact on the rain modifier
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Light intensity reading for the Mico:bit preliminary risk formula was too low in dark
+                                conditions and too high in bright light</td>
+                            <td>I added an initial calibration to the micro:bit startup that gets a reference baseline
+                                light level reading</td>
+                            <td>Light intensity readings are now more accurate and not out of scale for the formula</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </p>
             </article>
             <article>
+                <h3>Simulation Model</h3>
+                <br>
+                <hr>
+                <br>
+                <p>
+                    The best way to explain the simulation logic is to look at a pseudo-code version of the algorithm.
+                </p>
+                <pre class="code-block"><code class="language-javascript">
+                    FUNCTION Analyse Wildfire Risk inputs(microData, weatherData, tempScale, lightScale, rainScale):
+                        // 1. Initial Validation
+                        IF microData is EMPTY OR NULL:
+                            RETURN (NULL, 0.0)
+
+                        // 2. Data Preparation & Shaping
+                        FOR EACH row IN microData:
+                            row.Temp = row.Temp * tempScale
+                            row.Light = row.Light * lightScale
+
+                        IF weatherData is VALID:
+                            FOR EACH row IN weatherData:
+                                row.Rain = row.Rain * rainScale
+
+                        // 3. Process Risk for Each Data Point
+                        riskScores = []
+
+                        FOR i FROM 0 TO length(microData) - 1:
+                            rainModifier = 0.0
+
+                            IF weatherData is VALID:
+                                // Calculate 5-day rolling window
+                                recentWeather = GET_PREVIOUS_5_DAYS(weatherData, current_index = i)
+
+                                // Calculate Dry Spell Penalty
+                                dryDaysCount = COUNT rows IN recentWeather WHERE Rain < 0.5
+                                IF dryDaysCount >= 5: rainModifier += 20.0
+                                ELSE IF dryDaysCount == 4: rainModifier += 12.0
+                                ELSE IF dryDaysCount == 3: rainModifier += 5.0
+
+                                // Calculate Weighted Average Rain (Recent days carry more weight)
+                                avgRain = CALCULATE_WEIGHTED_AVERAGE(recentWeather.Rain)
+
+                                // Apply Quadratic Rain Reduction
+                                IF avgRain > 0:
+                                    rainModifier -= (0.025 * (avgRain^2) + 0.25 * avgRain)
+
+                            // 4. Base Risk Calculation
+                            // Temperature has a linear impact (factor of 2)
+                            // Light has a cubic impact (sharper increase at high brightness)
+                            baseRisk = (microData[i].Temp * 2.0) + (67 * (microData[i].Light / 230)^3)
+
+                            // 5. Final Assembly
+                            finalScore = baseRisk + rainModifier
+
+                            // Clamp score between 0 and 100
+                            finalScore = LIMIT(finalScore, MIN=0, MAX=100)
+                            riskScores.APPEND(finalScore)
+
+                        RETURN (microData WITH riskScores, TOTAL(weatherData.Rain))
+                    END FUNCTION
+
+                </code></pre>
+                <p>
+                    We can break this down into 3 key parts:
+                <ol>
+                    <li>
+                        <strong>Input Shaping</strong><br>
+                        The function uses "shaping factors" (temp_shaping, etc.).<br>
+                        This allows you to pass a modifier and run the "What-if" scenarios.<br>
+                        For example, if you want to simulate a 10% increase in global temperature, you simply set
+                        temp_shaping to 1.1 without altering the raw dataset.
+                    </li>
+                    <li>
+                        <strong>The Rain</strong><br>
+                        The model doesn't just look at if it is raining now; it looks at the history of the last 5 days:
+                        <ul>
+                            <li>The Dry Weather Penalty: It uses a limit system for "Dry Spells." If the last 5 days
+                                were dry, a significant penalty (+20) is added.<br>
+                                If there was only 4 dry days we add a 12% penalty.</li>
+                            <li>Weighted Average Reduction: When calculating moisture, the model uses a weighted
+                                average. This
+                                means rain that happened yesterday is considered much more effective at reducing fire
+                                risk than rain that happened five days ago.</li>
+                            <li>Quadratic Rain Effect: The reduction of risk follows a curve <em>(0.025 * (avgRain^2) +
+                                    0.25 * avgRain)</em> applied
+                                to the previous weighted average; this ensures that while
+                                a little rain helps reduce risk, extremely heavy rain has a much more powerful impact on
+                                the risk.</li>
+                            <li>I chose to treat the rainfall variable this way because it best represents real life. I
+                                know from my own experience gardening that dry plants take time to re-saturate with
+                                water. And a small mist of rain, even over many days, has considerably less impact on
+                                soil saturation than a large down-pour.</li>
+                        </ul>
+                        <div class="media-box" style="height: auto; background-color: white;">
+                            <img
+                                src="/assets/rain-days-graph.png"
+                                alt="Graph of the rain data from the API interface."
+                                style="object-fit: contain;">
+                        </div>
+                    </li>
+                    <li>
+                        <strong>The Risk Formula</strong><br>
+                        The base_risk uses two different mathematical curves to represent how the conditions measured by
+                        the microbit affect fire:
+                        <ul>
+                            <li>Linear Temperature: Every degree adds a consistent +2 to the risk score.</li>
+                            <li>Cubic Light Intensity: By raising the light levels (scaled to ~0–1) to the power of 3
+                                before amplifying the result,
+                                the model treats low light as negligible, for example its very hard for the sun to start
+                                a forest
+                                fire at night. But "intense" light creates a large,
+                                increase in risk. This makes sense because a sunny day provides the energy needed to
+                                start a fire.</li>
+                        </ul>
+
+                    </li>
+                    </p>
+                     <div class="media-box" style="height: auto; background-color: black;">
+                        <img
+                            src="/assets/iso-factors.png"
+                            alt="Graph of the isolated components of the risk formula"
+                            style="object-fit: contain; width: 80%; margin: 0 10%;">
+                    </div>
             </article>
         </section>
 
         <section id="evaluate">
-            <h2>FINAL EVALUATION: MISSION COMPLETE</h2>
+            <h2>FINAL EVALUATION</h2>
             <article>
-                <h3>Artefact Assessment</h3>
+                <h3>- Artefact Critical Assessment</h3>
                 <br>
                 <hr>
                 <br>
@@ -857,6 +990,10 @@
                         <tr>
                             <td>Design</td>
                             <td>641</td>
+                        </tr>
+                        <tr>
+                            <td>Create</td>
+                            <td>729</td>
                         </tr>
                         <tr>
                             <td>Total Word Count</td>
